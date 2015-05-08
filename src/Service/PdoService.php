@@ -128,7 +128,7 @@ class PdoService implements ServiceInterface
     {
         $statement = $this->pdo->prepare(
             "SELECT * FROM filespace_file
-            WHERE space_key=:space_key LIMIT 1"
+            WHERE space_key=:space_key"
         );
         $statement->execute(
             array(
