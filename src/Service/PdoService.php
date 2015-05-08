@@ -146,6 +146,7 @@ class PdoService implements ServiceInterface
         $file->setDeletedAt($row['deleted_at']);
         $file->setSizeOriginal($row['size_original']);
         $file->setSizeStorage($row['size_storage']);
+        $file->setDataHash($row['data_hash']);
         
         
         return $file;
@@ -179,6 +180,15 @@ class PdoService implements ServiceInterface
         
         $this->storage->setData($hash, $data);
         $this->persistFile($space, $file);
+    }
+
+    public function download(Space $space, $filekey, $filename)
+    {
+        $file = $this->getFile($space, $filekey);
+        print_r($file);
+        $hash = $file->getDataHash();
+        $data = $this->storage->getData($hash);
+        file_put_contents($filename, $data);
     }
     
     private function persistFile(Space $space, File $file)
