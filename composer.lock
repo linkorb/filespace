@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "linkorb/objectstorage",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/linkorb/objectstorage.git",
-                "reference": "5e48656e72c65e20c5a67b9f2fbb96bc5bd9de62"
+                "reference": "777e6ef6d27ae4be069ddbb6b7d240e77f81a40f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/linkorb/objectstorage/zipball/5e48656e72c65e20c5a67b9f2fbb96bc5bd9de62",
-                "reference": "5e48656e72c65e20c5a67b9f2fbb96bc5bd9de62",
+                "url": "https://api.github.com/repos/linkorb/objectstorage/zipball/777e6ef6d27ae4be069ddbb6b7d240e77f81a40f",
+                "reference": "777e6ef6d27ae4be069ddbb6b7d240e77f81a40f",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "s3",
                 "storage"
             ],
-            "time": "2015-05-08 11:33:03"
+            "time": "2015-05-08 14:14:42"
         },
         {
             "name": "phpseclib/phpseclib",
