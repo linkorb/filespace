@@ -70,8 +70,12 @@ class PdoService implements ServiceInterface
         return $space;
     }
 
-    public function createSpace($spacekey)
+    public function createSpace($spacekey, $name)
     {
+        $space = new Space($spacekey);
+        $space->setName($name);
+        $space->setCreatedAt(time());
+        $this->persistSpace($space);
         return $this->getSpace($spacekey);
     }
 
@@ -185,12 +189,29 @@ class PdoService implements ServiceInterface
     public function download(Space $space, $filekey, $filename)
     {
         $file = $this->getFile($space, $filekey);
-        print_r($file);
         $hash = $file->getDataHash();
         $data = $this->storage->getData($hash);
         file_put_contents($filename, $data);
     }
     
+    private function persistSpace(Space $space)
+    {
+        $statement = $this->pdo->prepare(
+            "INSERT INTO filespace
+             (space_key, name, created_at)
+             VALUES
+             (:space_key, :name, :created_at)"
+        );
+        $statement->execute(
+            array(
+                'space_key' => $space->getKey(),
+                'name' => $space->getName(),
+                'created_at' => $space->getCreatedAt()
+            )
+        );
+        
+    }
+
     private function persistFile(Space $space, File $file)
     {
         $statement = $this->pdo->prepare(
