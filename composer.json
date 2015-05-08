@@ -1,0 +1,31 @@
+{
+    "name": "linkorb/filespace",
+    "description": "Flexible storage solution for end-user data",
+    "homepage": "http://www.github.com/linkorb/filespace",
+    "keywords": ["filespace", "namespace", "objectstorage", "s3", "gridfs", "mongodb", "storage", "cloud storage"],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Joost Faassen",
+            "email": "j.faassen@linkorb.com",
+    	    "role": "Development"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "linkorb/objectstorage": "~2.0",
+        "phpseclib/phpseclib": "~0.3"
+    },
+    "require-dev": {
+        "symfony/console": "~2.4",
+        "aws/aws-sdk-php": "~2.7",
+        "linkorb/database-manager": "dev-master",
+        "doctrine/dbal": "~2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "FileSpace\\": "src/"
+        } 
+    },
+    "license": "MIT"
+}
