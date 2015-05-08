@@ -93,7 +93,8 @@ class PdoService implements ServiceInterface
     {
         $statement = $this->pdo->prepare(
             "SELECT * FROM filespace_file
-            WHERE space_key=:space_key AND file_key=:file_key ORDER BY created_at DESC LIMIT 1"
+            WHERE space_key=:space_key AND file_key=:file_key AND deleted_at=0
+            ORDER BY created_at DESC LIMIT 1"
         );
         $statement->execute(
             array(
@@ -111,7 +112,8 @@ class PdoService implements ServiceInterface
     {
         $statement = $this->pdo->prepare(
             "SELECT * FROM filespace_file
-            WHERE space_key=:space_key AND file_key=:file_key ORDER BY created_at DESC LIMIT 1"
+            WHERE space_key=:space_key AND file_key=:file_key AND deleted_at=0
+            ORDER BY created_at DESC LIMIT 1"
         );
         $statement->execute(
             array(
@@ -128,7 +130,7 @@ class PdoService implements ServiceInterface
     {
         $statement = $this->pdo->prepare(
             "SELECT * FROM filespace_file
-            WHERE space_key=:space_key"
+            WHERE space_key=:space_key AND deleted_at=0"
         );
         $statement->execute(
             array(
@@ -156,14 +158,20 @@ class PdoService implements ServiceInterface
         return $file;
     }
     
-    public function createFile(SpaceInterface $space, $filekey)
+    public function deleteFile(Space $space, $filekey)
     {
-        return $this->getFile($filekey);
-    }
-    
-    public function deleteFile(SpaceInterface $space, $filekey)
-    {
-        //TODO
+        $statement = $this->pdo->prepare(
+            "UPDATE filespace_file
+            SET deleted_at=:now
+            WHERE space_key=:space_key AND file_key=:file_key AND deleted_at=0"
+        );
+        $statement->execute(
+            array(
+                'now' => time(),
+                'space_key' => $space->getKey(),
+                'file_key' => $filekey,
+            )
+        );
     }
     
     
