@@ -182,13 +182,14 @@ class PdoService implements ServiceInterface
         }
         // First delete any previous versions
         $this->deleteFile($space, $filekey);
+        $stamp = filemtime($filename);
         
         $data = file_get_contents($filename);
         $hash = sha1($data);
         
         $file = new File($filekey);
-        $file->setCreatedAt(time());
-        $file->setUpdatedAt(time());
+        $file->setCreatedAt($stamp);
+        $file->setUpdatedAt($stamp);
         $file->setDataHash($hash);
         $file->setSizeOriginal(strlen($data));
         $file->setSizeStorage(strlen($data));
