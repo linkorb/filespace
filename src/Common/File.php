@@ -28,6 +28,25 @@ class File
         $this->size_original = $size_original;
     }
     
+    public function getSizeOriginalDisplay()
+    {
+        $filesize = $this->getSizeOriginal();
+        
+        if (is_numeric($filesize)) {
+            $decr = 1024;
+            $step = 0;
+            $unit = array('Byte','KB','MB','GB','TB','PB');
+
+            while (($filesize / $decr) > 0.9) {
+                $filesize = $filesize / $decr;
+                $step++;
+            }
+            return round($filesize, 1) . $unit[$step];
+        } else {
+            return '?';
+        }
+    }
+    
     private $size_storage;
     
     public function getSizeStorage()
