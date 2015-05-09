@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema>
+
+    <table name="filespace">
+        <column name="space_key" type="varchar(256)" />
+        <column name="created_at" type="integer" />
+        <column name="updated_at" type="integer" />
+        <column name="deleted_at" type="integer" />
+        <column name="name" type="varchar(256)" />
+    </table>
+
+    <table name="filespace_file">
+        <column name="file_key" type="varchar(256)" />
+        <column name="space_key" type="varchar(256)" />
+        <column name="data_hash" type="varchar(64)" />
+        <column name="created_at" type="integer" />
+        <column name="deleted_at" type="integer" />
+        <column name="size_original" type="integer" />
+        <column name="size_storage" type="integer" />
+    </table>
+
+</schema>
