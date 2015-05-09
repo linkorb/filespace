@@ -180,6 +180,9 @@ class PdoService implements ServiceInterface
         if (!file_exists($filename)) {
             throw new RuntimeException("Can't upload non-existant file: " . $filename);
         }
+        // First delete any previous versions
+        $this->deleteFile($space, $filekey);
+        
         $data = file_get_contents($filename);
         $hash = sha1($data);
         
