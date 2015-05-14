@@ -2,7 +2,7 @@
 
 Flexible storage solution for end-user data.
 
-Check out our blogpost to see how we're using it in production:   [engineering.linkorb.com/blog/scaling-user-data-with-objectstorage-in-php](engineering.linkorb.com/blog/scaling-user-data-with-objectstorage-in-php)
+Check out our blogpost to see how we're using it in production:   [http://engineering.linkorb.com/blog/scaling-user-data-with-objectstorage-in-php](http://engineering.linkorb.com/blog/scaling-user-data-with-objectstorage-in-php)
 
 ## Installing
 
