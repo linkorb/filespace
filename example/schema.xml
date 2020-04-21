@@ -2,21 +2,29 @@
 <schema>
 
     <table name="filespace">
-        <column name="space_key" type="varchar(256)" />
+        <column name="id" type="integer" unsigned="true" autoincrement="true"/>
+        <column name="space_key" type="string" length="256" />
         <column name="created_at" type="integer" />
         <column name="updated_at" type="integer" />
         <column name="deleted_at" type="integer" />
-        <column name="name" type="varchar(256)" />
+        <column name="name" type="string" length="256" />
+
+        <index name="primary" primary="true" columns="id"/>
+        <index name="space_key" primary="false" columns="space_key"/>
     </table>
 
     <table name="filespace_file">
-        <column name="file_key" type="varchar(256)" />
-        <column name="space_key" type="varchar(256)" />
-        <column name="data_hash" type="varchar(64)" />
+        <column name="id" type="integer" unsigned="true" autoincrement="true"/>
+        <column name="file_key" type="string" length="256" />
+        <column name="space_key" type="string" length="256" />
+        <column name="data_hash" type="string" length="64" />
         <column name="created_at" type="integer" />
         <column name="deleted_at" type="integer" />
         <column name="size_original" type="integer" />
         <column name="size_storage" type="integer" />
+
+        <index name="primary" primary="true" columns="id"/>
+        <index name="space_key" primary="false" columns="space_key"/>
     </table>
 
 </schema>
