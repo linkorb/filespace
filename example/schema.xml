@@ -4,9 +4,9 @@
     <table name="filespace">
         <column name="id" type="integer" unsigned="true" autoincrement="true"/>
         <column name="space_key" type="string" length="256" />
-        <column name="created_at" type="integer" />
-        <column name="updated_at" type="integer" />
-        <column name="deleted_at" type="integer" />
+        <column name="created_at" type="integer"  />
+        <column name="updated_at" type="integer"  notnull="false" />
+        <column name="deleted_at" type="integer" notnull="false" />
         <column name="name" type="string" length="256" />
 
         <index name="primary" primary="true" columns="id"/>
@@ -19,7 +19,7 @@
         <column name="space_key" type="string" length="256" />
         <column name="data_hash" type="string" length="64" />
         <column name="created_at" type="integer" />
-        <column name="deleted_at" type="integer" />
+        <column name="deleted_at" type="integer" notnull="false" />
         <column name="size_original" type="integer" />
         <column name="size_storage" type="integer" />
 
